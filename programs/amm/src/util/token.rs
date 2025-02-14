@@ -33,10 +33,10 @@ const MINT_WHITELIST: [&'static str; 6] = [
 pub fn invoke_memo_instruction<'info>(
     memo_msg: &[u8],
     memo_program: AccountInfo<'info>,
-) -> solana_program::entrypoint::ProgramResult {
+) -> anchor_lang::solana_program::entrypoint::ProgramResult {
     let ix = spl_memo::build_memo(memo_msg, &Vec::new());
     let accounts = vec![memo_program];
-    solana_program::program::invoke(&ix, &accounts[..])
+    anchor_lang::solana_program::program::invoke(&ix, &accounts[..])
 }
 
 pub fn transfer_from_user_to_pool_vault<'info>(
@@ -300,7 +300,7 @@ pub fn create_position_nft_mint_with_extensions<'info>(
                     None,
                     Some(position_nft_mint.key()),
                 )?;
-                solana_program::program::invoke(
+                anchor_lang::solana_program::program::invoke(
                     &ix,
                     &[
                         token_2022_program.to_account_info(),
@@ -314,7 +314,7 @@ pub fn create_position_nft_mint_with_extensions<'info>(
                     position_nft_mint.key,
                     Some(mint_close_authority.key),
                 )?;
-                solana_program::program::invoke(
+                anchor_lang::solana_program::program::invoke(
                     &ix,
                     &[
                         token_2022_program.to_account_info(),

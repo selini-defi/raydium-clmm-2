@@ -556,7 +556,7 @@ pub fn exact_internal<'b, 'c: 'info, 'info>(
     sqrt_price_limit_x64: u128,
     is_base_input: bool,
 ) -> Result<u64> {
-    let block_timestamp = solana_program::clock::Clock::get()?.unix_timestamp as u64;
+    let block_timestamp = anchor_lang::solana_program::clock::Clock::get()?.unix_timestamp as u64;
 
     let amount_0;
     let amount_1;
